@@ -48,5 +48,9 @@ public class SQL {
 		return false;
 		
 	}
+	
+	public static Connection getConnexion(){
+		return connection;
+	}
 
 }

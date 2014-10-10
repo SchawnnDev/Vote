@@ -2,3 +2,4 @@ Host: localhost
 Database: vote
 Identifiant: root
 MotDePasse: mdp
+KitName: Tools

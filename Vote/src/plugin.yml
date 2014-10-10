@@ -6,3 +6,7 @@ description: Voter pour recevoir des items
 commands:
   vote:
     description: Voter et recevoir des items
+  setPoints:
+    description: Set points vote
+  getPoints:
+    description: Avoir points vote
