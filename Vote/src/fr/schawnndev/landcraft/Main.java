@@ -28,8 +28,8 @@ public class Main extends JavaPlugin {
 			Bukkit.getLogger().warning("[Vote LandCraft] Il manque Essentials sur le serveur!");
 			Bukkit.getPluginManager().disablePlugin(this);
 		}
-		getCommand("getkills").setExecutor(new Vote(this));		
-		getCommand("setkills").setExecutor(new Vote(this));	
+		getCommand("getpoints").setExecutor(new Vote(this));		
+		getCommand("setpoints").setExecutor(new Vote(this));	
 		pm.registerEvents(new VoteEvents(), this);
 	}
 	
