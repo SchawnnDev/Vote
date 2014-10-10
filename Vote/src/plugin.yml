@@ -1,0 +1,8 @@
+name: VoteLandCraft
+main: fr.schawnndev.landcraft.Main
+version: 1.0
+author: SchawnnDev
+description: Voter pour recevoir des items
+commands:
+  vote:
+    description: Voter et recevoir des items
