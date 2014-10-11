@@ -24,14 +24,15 @@ public class Vote implements CommandExecutor {
 		String cmd = "essentials:kit " + plugin.kit + " " + name;
 
 		if (label.equalsIgnoreCase("vote")) {
-			if (args.length == 0) {
 				if (SQLManager.hasPoints(player)) {
 					player.sendMessage("§aVoila ton kit, merci pour le vote et à la prochaine fois!");
 					Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
+					SQLManager.setPoints(player, 0);
 				} else {
-					player.sendMessage("§cIl faut que tu votent! http://play.land-craft.eu/#voter");
+					player.sendMessage("§cIl faut que tu votes! http://play.land-craft.eu/#voter");
 				}
-			} else {
+				
+			if(args.length < 0){
 				player.sendMessage("§cTrop d'arguments!");
 			}
 		}

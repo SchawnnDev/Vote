@@ -8,10 +8,10 @@ import fr.schawnndev.landcraft.VoteEvents;
 
 public class Main extends JavaPlugin {
 	
-	private String host = getConfig().getString("Host");
-	private String database = getConfig().getString("Database");
-	private String user = getConfig().getString("Identifiant");
-	private String password = getConfig().getString("MotDePasse");
+	public String host = getConfig().getString("Host");
+	public String database = getConfig().getString("Database");
+	public String user = getConfig().getString("Identifiant");
+	public String password = getConfig().getString("MotDePasse");
 	public String kit = getConfig().getString("KitName");
 	 PluginManager pm = getServer().getPluginManager();
 
@@ -19,17 +19,18 @@ public class Main extends JavaPlugin {
 
 		getConfig().options().copyDefaults(true);
 		saveConfig();
-		if (host.length() != 0 && database.length() != 0 && user.length() != 0 && password.length() != 0) {
-			new SQL(host, 3306, database, user, password);
-		} else {
-			Bukkit.getLogger().severe("[Vote LandCraft] MySQL => Idenfiants faux sont egals a 0 ! (Config.yml)");
-		}
+	//	if (host.length() != 0 && database.length() != 0 && user.length() != 0 && password.length() != 0) {
+		new SQL(this).connect();
+		//	} else {
+	//		Bukkit.getLogger().severe("[Vote LandCraft] MySQL => Idenfiants faux sont egals a 0 ! (Config.yml)");
+	//	}
 		if (Bukkit.getPluginManager().getPlugin("Essentials") == null) {
 			Bukkit.getLogger().warning("[Vote LandCraft] Il manque Essentials sur le serveur!");
 			Bukkit.getPluginManager().disablePlugin(this);
 		}
 		getCommand("getpoints").setExecutor(new Vote(this));		
-		getCommand("setpoints").setExecutor(new Vote(this));	
+		getCommand("setpoints").setExecutor(new Vote(this));
+		getCommand("vote").setExecutor(new Vote(this));
 		pm.registerEvents(new VoteEvents(), this);
 	}
 	

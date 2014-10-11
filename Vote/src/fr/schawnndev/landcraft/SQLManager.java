@@ -28,10 +28,13 @@ public class SQLManager {
 	}
 	
 	public static boolean hasPoints(Player player) {
-		if(getPoints(player) == 1)
-			return true;
-		else 
-			return false;
+		if (isPlayerInDB(player) == true) {
+			if (getPoints(player) == 1)
+				return true;
+			else
+				return false;
+		}
+		return false;
 	}
 	
 	public static void supprimerPoints(Player player){
