@@ -12,8 +12,7 @@ public class SQLManager {
 	public static boolean isPlayerInDB(Player player){
 		try {
 			Statement st = SQL.getConnexion().createStatement();
-			ResultSet rs = null;
-			rs = st.executeQuery("SELECT * FROM test WHERE player_name='"+ player.getName() +"'");
+			ResultSet rs = st.executeQuery("SELECT * FROM test WHERE player_name='"+ player.getName() +"'");
 			while(rs.next())
 				if(rs != null)
 					return true;
@@ -28,19 +27,14 @@ public class SQLManager {
 	}
 	
 	public static boolean hasPoints(Player player) {
-		if (isPlayerInDB(player) == true) {
-			if (getPoints(player) == 1)
-				return true;
-			else
-				return false;
-		}
+		if (isPlayerInDB(player) && getPoints(player) == 1)				return true;
+		
 		return false;
 	}
 	
 	public static void supprimerPoints(Player player){
-		if(hasPoints(player)){
+		if(hasPoints(player))
 			setPoints(player, 0);
-		}
 	}
 	
 	public static void setPoints(Player player, int points){
@@ -65,12 +59,11 @@ public class SQLManager {
 		
 		try {
 			Statement st = SQL.getConnexion().createStatement();
-			ResultSet rs = null;
-
-			rs = st.executeQuery("SELECT * FROM test WHERE player_name='" + player.getName() + "'");
+			ResultSet rs = st.executeQuery("SELECT * FROM test WHERE player_name='" + player.getName() + "'");
 
 			while (rs.next()) 
                            points = rs.getInt(2);
+
 			st.close();
 			rs.close();
 		} catch (SQLException e) {
