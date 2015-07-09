@@ -8,22 +8,22 @@ import org.bukkit.Bukkit;
 
 public class SQL {
 	
-	String ipa = null, databasea = null, usera = null, passworda = null, p = ":"; 
-	int porta;
+	private String ip = null, database = null, user = null, password = null; 
+	private int port;
 	
 	public SQL (String host, int port, String database, String user, String password){
-		this.ipa = host;
-		this.porta = port;
-		this.databasea = database;
-		this.usera = user;
-		this.passworda = password;
+		this.ip = host;
+		this.port = port;
+		this.database = database;
+		this.user = user;
+		this.password = password;
 	}
 	
 	public static Connection connection;
 	
 	public Connection connect(){
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://" + this.ipa + ":" + this.porta + "/" + this.databasea, this.usera, this.passworda);
+			connection = DriverManager.getConnection("jdbc:mysql://" + this.ip + ":" + this.porta + "/" + this.database, this.user, this.password);
 			Bukkit.getLogger().info("[Vote LandCraft] MySQL => En fonctionnement !");
 		} catch (SQLException e) {
 		Bukkit.getLogger().severe("[Vote LandCraft] Erreur MySQL => " + e.getMessage());
