@@ -14,10 +14,10 @@ public class SQLManager {
 			Statement st = SQL.getConnexion().createStatement();
 			ResultSet rs = null;
 			rs = st.executeQuery("SELECT * FROM test WHERE player_name='"+ player.getName() +"'");
-			while(rs.next()){
+			while(rs.next())
 				if(rs != null)
 					return true;
-			}
+			
 			st.close();
 			rs.close();
 		} catch (SQLException e) {
@@ -44,16 +44,13 @@ public class SQLManager {
 	}
 	
 	public static void setPoints(Player player, int points){
-		int a = 0;
-		a = points;
+
 		try {
 			Statement st = SQL.getConnexion().createStatement();
 			
-			if(isPlayerInDB(player)){
-				st.executeUpdate("UPDATE test SET pointsFactions='"+a+"' WHERE player_name='"+player.getName()+"'");
-			} else {
-				
-			}
+			if(isPlayerInDB(player))
+				st.executeUpdate("UPDATE test SET pointsFactions='"+points+"' WHERE player_name='"+player.getName()+"'");
+
 			st.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -65,16 +62,15 @@ public class SQLManager {
 	
 	public static int getPoints(Player player) {
 		int points = 0;
-		String name = player.getName();
+		
 		try {
 			Statement st = SQL.getConnexion().createStatement();
 			ResultSet rs = null;
 
-			rs = st.executeQuery("SELECT * FROM test WHERE player_name='" + name + "'");
+			rs = st.executeQuery("SELECT * FROM test WHERE player_name='" + player.getName() + "'");
 
-			while (rs.next()) {
-				points = rs.getInt(2); //TODO: getInt
-			}
+			while (rs.next()) 
+                           points = rs.getInt(2);
 			st.close();
 			rs.close();
 		} catch (SQLException e) {
