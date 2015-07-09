@@ -8,9 +8,9 @@ public class VoteEvents implements Listener{
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e){
-		if(SQLManager.hasPoints(e.getPlayer())){
-			e.getPlayer().sendMessage("§3[§bVotes§3]§a N'oublies pas de faire /vote pour avoir ta récompense!");
-		}
+		if(SQLManager.hasPoints(e.getPlayer()))
+			e.getPlayer().sendMessage("Â§3[Â§bVotesÂ§3]Â§a N'oublies pas de faire /vote pour avoir ta rÃ©compense!");
+		
 	}
 
 }
