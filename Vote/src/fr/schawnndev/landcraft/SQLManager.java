@@ -27,7 +27,8 @@ public class SQLManager {
 	}
 	
 	public static boolean hasPoints(Player player) {
-		if (isPlayerInDB(player) && getPoints(player) == 1)				return true;
+		if (isPlayerInDB(player) && getPoints(player) >= 1)	
+			return true;
 		
 		return false;
 	}
